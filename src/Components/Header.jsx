@@ -86,9 +86,20 @@ const Header = () => {
 
             <div className="flex gap-3 items-center md:hidden ">
               {/* search bar */}
-              <FaSearch className="" onClick={() => navigate("/products")} />
+              <FaSearch
+                className="text-[18px]"
+                onClick={() => {
+                  navigate("/products");
+                  setShowMenu(false);
+                }}
+              />
+
               {/* Cart */}
-              <Link className=" flex items-center gap-2" to="/cart">
+              <Link
+                onClick={() => setShowMenu(false)}
+                className=" flex items-center gap-2"
+                to="/cart"
+              >
                 <FaShoppingCart className="text-blue-500 text-2xl" />
                 <span className="text-[18px]">0</span>
               </Link>
