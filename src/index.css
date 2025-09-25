@@ -4,4 +4,17 @@
 }
 body {
   overflow-y: scroll;
+  position: relative;
+}
+body::after {
+  position: absolute;
+  content: "";
+  background-image: url("assets/hero.jpg");
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  inset: 0;
+  z-index: -1;
+  filter: brightness(80%);
 }
