@@ -76,7 +76,11 @@ const Header = () => {
               </ul>
             </nav>
 
-            <Link className="flex items-center gap-2" to="/cart">
+            <Link
+              className="flex items-center gap-2"
+              to="/cart"
+              onClick={() => setShowMenu(false)}
+            >
               <FaShoppingCart className="text-blue-500 text-2xl" />
               <span className="text-[18px]">0</span>
             </Link>
