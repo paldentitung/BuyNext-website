@@ -4,11 +4,11 @@ import { productsData } from "../data/ProductsData";
 import { Link } from "react-router-dom";
 const ProductListing = ({ showAll = false }) => {
   console.log(productsData);
-  const showData = showAll ? productsData : productsData.slice(0, 10);
+  const showData = showAll ? productsData : productsData.slice(0, 12);
   return (
     <>
       <div className=" p-[5%]">
-        <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-5">
+        <div className="grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] gap-5">
           {showData.map((product, index) => (
             <Card key={index} product={product} />
           ))}
