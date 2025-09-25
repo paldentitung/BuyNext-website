@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { FaShoppingCart, FaBars } from "react-icons/fa";
+import { FaShoppingCart, FaBars, FaSearch } from "react-icons/fa";
 import { Link, NavLink } from "react-router-dom";
-
+import { useNavigate } from "react-router-dom";
 const Header = () => {
   const [showMenu, setShowMenu] = useState(false);
 
@@ -12,6 +12,7 @@ const Header = () => {
     { name: "Contact", path: "/contact" },
   ];
 
+  const navigate = useNavigate();
   return (
     <>
       <div className="bg-white flex justify-around items-center p-6 border-b-gray-300 md:border relative">
@@ -47,11 +48,18 @@ const Header = () => {
           </ul>
         </nav>
 
-        {/* Cart */}
-        <Link className="hidden md:flex items-center gap-2" to="/cart">
-          <FaShoppingCart className="text-blue-500 text-2xl" />
-          <span className="text-[18px]">0</span>
-        </Link>
+        <div className=" hidden md:flex items-center gap-5">
+          {/* search bar */}
+          <FaSearch
+            className=" items-center gap-2"
+            onClick={() => navigate("/products")}
+          />
+          {/* Cart */}
+          <Link className=" flex items-center gap-2" to="/cart">
+            <FaShoppingCart className="text-blue-500 text-2xl" />
+            <span className="text-[18px]">0</span>
+          </Link>
+        </div>
 
         {/* Mobile Menu */}
         {showMenu && (
@@ -76,14 +84,15 @@ const Header = () => {
               </ul>
             </nav>
 
-            <Link
-              className="flex items-center gap-2"
-              to="/cart"
-              onClick={() => setShowMenu(false)}
-            >
-              <FaShoppingCart className="text-blue-500 text-2xl" />
-              <span className="text-[18px]">0</span>
-            </Link>
+            <div className="flex gap-3 items-center md:hidden ">
+              {/* search bar */}
+              <FaSearch className="" onClick={() => navigate("/products")} />
+              {/* Cart */}
+              <Link className=" flex items-center gap-2" to="/cart">
+                <FaShoppingCart className="text-blue-500 text-2xl" />
+                <span className="text-[18px]">0</span>
+              </Link>
+            </div>
 
             <button
               onClick={() => setShowMenu(false)}
