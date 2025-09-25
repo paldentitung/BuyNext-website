@@ -13,6 +13,7 @@ const ProductListing = ({ showAll = false }) => {
   );
 
   const showData = showAll ? searchItem : searchItem.slice(0, 12);
+
   return (
     <>
       <div className=" p-[5%] bg-white flex flex-col space-y-5">
@@ -28,9 +29,17 @@ const ProductListing = ({ showAll = false }) => {
           <h1 className="text-[20px] md:text-2xl font-bold">Products</h1>
         </div>
         <div className="grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] gap-5">
-          {showData.map((product, index) => (
-            <Card key={index} product={product} />
-          ))}
+          {showData.length === 0 ? (
+            <p className="text-center text-[20px] text-red-400">
+              Product Not Found
+            </p>
+          ) : (
+            <>
+              {showData.map((product, index) => (
+                <Card key={index} product={product} />
+              ))}
+            </>
+          )}
         </div>
         {!showAll && (
           <Link
