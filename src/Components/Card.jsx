@@ -12,7 +12,7 @@ const Card = ({ product }) => {
   };
   return (
     <>
-      <div className=" rounded-md  h-auto lg:h-[400px] flex justify-center items-center flex-col gap-3 shadow-md shadow-[rgb(230,230,230)] ">
+      <div className=" rounded-md  h-auto lg:h-[400px]  flex justify-center items-center flex-col gap-3 shadow-md shadow-[rgb(230,230,230)] ">
         <div className="h-1/2">
           <img src={image} alt="" className="h-48 p-2  object-contain" />
         </div>

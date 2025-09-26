@@ -18,12 +18,14 @@ const ProductListing = ({ showAll = false }) => {
     <>
       <div className=" p-[5%] bg-white flex flex-col space-y-5">
         <div className="w-full  flex justify-center items-center">
-          <input
-            type="search"
-            placeholder="search products..."
-            onChange={(e) => setSearchTerm(e.target.value)}
-            className="border w-3/4 outline-0 border-gray-400 p-3 rounded-md  transition-all duration-200 hover:shadow-md focus:shadow-sm "
-          />
+          {showAll && (
+            <input
+              type="search"
+              placeholder="search products..."
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="border w-3/4 outline-0 border-gray-400 p-3 rounded-md  transition-all duration-200 hover:shadow-md focus:shadow-sm "
+            />
+          )}
         </div>
         <div className="flex justify-center items-center ">
           <h1 className="text-[20px] md:text-2xl font-bold">Products</h1>
