@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { FaShoppingCart, FaBars, FaSearch } from "react-icons/fa";
 import { Link, NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { CartContext } from "../context/CardContext";
 const Header = () => {
   const [showMenu, setShowMenu] = useState(false);
 
@@ -13,6 +15,9 @@ const Header = () => {
   ];
 
   const navigate = useNavigate();
+  const { cart } = useContext(CartContext);
+  // total items in cart
+  const cartCount = cart.reduce((total, item) => total + item.quantity, 0);
   return (
     <>
       <div className="bg-white flex justify-around items-center p-6 border-b-gray-300 md:border relative">
@@ -57,7 +62,7 @@ const Header = () => {
           {/* Cart */}
           <Link className=" flex items-center gap-2" to="/cart">
             <FaShoppingCart className="text-blue-500 text-2xl" />
-            <span className="text-[18px]">0</span>
+            <span className="text-[18px]">{cartCount}</span>
           </Link>
         </div>
 
@@ -101,7 +106,7 @@ const Header = () => {
                 to="/cart"
               >
                 <FaShoppingCart className="text-blue-500 text-2xl" />
-                <span className="text-[18px]">0</span>
+                <span className="text-[18px]">{cartCount}</span>
               </Link>
             </div>
 

@@ -4,9 +4,10 @@ import { productsData } from "../data/ProductsData";
 import rating50 from "../assets/ratings/rating-50.png";
 import rating45 from "../assets/ratings/rating-45.png";
 import rating40 from "../assets/ratings/rating-40.png";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { FaArrowLeft } from "react-icons/fa";
-
+import { CartContext } from "../context/CardContext";
+import ToastMessage from "../Components/ToastMessage";
 const ProductDetails = () => {
   const { id } = useParams();
   const selectedProduct = productsData.find((product) => product.id === id);
@@ -27,6 +28,8 @@ const ProductDetails = () => {
   };
   const navigate = useNavigate();
   const [quantity, setQuantity] = useState(1);
+  const { addToCart } = useContext(CartContext);
+  const [showToast, setShowToast] = useState(false);
   return (
     <div className=" min-h-screen w-full  bg-white">
       <button
@@ -121,9 +124,24 @@ const ProductDetails = () => {
             </div>
           </div>
           <div>
-            <button className=" block bg-blue-700 text-white px-6 py-2 rounded-lg hover:bg-blue-600 transition hover:cursor-pointer">
+            <button
+              onClick={() => {
+                addToCart(
+                  { id, name: currentName, image: currentImage, priceCents },
+                  quantity
+                );
+
+                // Show the toast
+                setShowToast(true);
+
+                // Hide toast after 2 seconds
+                setTimeout(() => setShowToast(false), 2000);
+              }}
+              className=" block bg-blue-700 text-white px-6 py-2 rounded-lg hover:bg-blue-600 transition hover:cursor-pointer"
+            >
               add to cart
             </button>
+            <ToastMessage showToast={showToast}>Added To Cart!</ToastMessage>;
           </div>
         </div>
       </div>
