@@ -127,7 +127,13 @@ const ProductDetails = () => {
             <button
               onClick={() => {
                 addToCart(
-                  { id, name: currentName, image: currentImage, priceCents },
+                  {
+                    id,
+                    name: currentName,
+                    image: currentImage,
+                    priceCents,
+                    rating,
+                  },
                   quantity
                 );
 
