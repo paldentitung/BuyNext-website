@@ -20,8 +20,13 @@ const Header = () => {
   return (
     <div className="bg-white flex  lg:justify-around justify-between items-center p-6 border-b border-gray-300 relative">
       {/* Logo */}
-      <Link to="/" className="text-2xl md:text-3xl text-blue-500 font-bold">
-        BuyNext
+      <Link to="/" className="flex items-center gap-2">
+        <div className="w-10 h-10 md:w-12 md:h-12 bg-blue-500 rounded-full flex justify-center items-center text-white font-bold italic text-lg md:text-xl">
+          BN
+        </div>
+        <span className="text-2xl md:text-3xl text-blue-500 font-bold">
+          BuyNext
+        </span>
       </Link>
 
       {/* Desktop Nav */}
