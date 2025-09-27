@@ -58,8 +58,11 @@ const Header = () => {
         </Link>
 
         {/* Hamburger for mobile */}
-        <div className="md:hidden">
-          <button onClick={() => setShowMenu(!showMenu)}>
+        <div className="md:hidden flex  items-center ">
+          <button
+            onClick={() => setShowMenu(!showMenu)}
+            className="text-[20px]"
+          >
             <FaBars />
           </button>
         </div>
