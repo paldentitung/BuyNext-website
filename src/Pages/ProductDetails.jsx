@@ -31,7 +31,7 @@ const ProductDetails = () => {
   const { addToCart } = useContext(CartContext);
   const [showToast, setShowToast] = useState(false);
   return (
-    <div className=" min-h-screen w-full  bg-white">
+    <div className=" min-h-screen w-full  bg-gray-50">
       <button
         className="text-blue-500 flex items-center gap-1  px-[5%] pt-7 hover:cursor-pointer"
         onClick={() => navigate(-1)}
@@ -40,14 +40,14 @@ const ProductDetails = () => {
       </button>
       <div className="w-full h-full p-2 md:p-[5%] flex flex-col md:flex-row justify-between gap-10 ">
         {/* image container */}
-        <div className="w-full md:w-1/2 flex flex-col items-center gap-6">
+        <div className="w-full md:w-1/2 flex flex-col items-center gap-6 bg-gray-50">
           {/* Main Product Image */}
 
           <img
             src={currentImage}
             alt={currentName}
-            className="h-[400px]
-             w-[400px] object-contain "
+            className="md:h-[400px] h-[230px] w-[230px]
+             md:w-[400px] object-contain mix-blend-multiply  "
           />
 
           {/* Variations */}
@@ -84,7 +84,7 @@ const ProductDetails = () => {
 
         {/* product  details container */}
 
-        <div className="md:w-3/4 md:h-3/4 p-3 flex flex-col space-y-5 md:mt-10">
+        <div className="md:w-3/4 md:h-3/4 p-4 flex flex-col space-y-5 md:mt-10 bg-white rounded-md  shadow-md">
           <h1 className="text-[20px] md:text-2xl lg:text-3xl font-bold">
             {currentName}
           </h1>
