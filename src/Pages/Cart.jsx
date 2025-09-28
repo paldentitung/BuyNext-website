@@ -4,6 +4,7 @@ import CartStep from "../Components/CartStep";
 import ShippingStep from "../Components/ShippingStep";
 import PaymentStep from "../Components/PaymentStep";
 import OrderReview from "../Components/OrderReview";
+import { useNavigate } from "react-router-dom";
 const Cart = () => {
   const [currentStep, setCurrentStep] = useState(1);
   const [shippingDate, setShippingDate] = useState();
@@ -17,6 +18,18 @@ const Cart = () => {
 
   const onBackStep = () => {
     setCurrentStep(currentStep - 1);
+  };
+  const navigate = useNavigate();
+  const handlePlaceOrder = () => {
+    const orderData = {
+      id: Date.now(), // fake order ID
+      shippingMethod,
+      shippingDate,
+      paymentMethod,
+    };
+
+    // Navigate to ThankYou page with state
+    navigate("/thank-you", { state: { order: orderData } });
   };
   return (
     <div className="bg-white">
@@ -47,17 +60,7 @@ const Cart = () => {
           shippingDate={shippingDate}
           paymentMethod={paymentMethod}
           onBack={onBackStep} // use your existing back function
-          onPlaceOrder={() => {
-            // Example: finalize order here
-            console.log("Order placed!", {
-              shippingMethod,
-              shippingDate,
-              paymentMethod,
-            });
-            alert("Order placed successfully!");
-            // Optionally, reset the cart/steps
-            setCurrentStep(1);
-          }}
+          onPlaceOrder={handlePlaceOrder}
         />
       )}
     </div>

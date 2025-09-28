@@ -88,6 +88,7 @@ import womenKnitBalletFlatGray from "../assets/images-folder/products/variations
 import womenKnitBalletFlatLeopard from "../assets/images-folder/products/variations/women-knit-ballet-flat-leopard.jpg";
 import womenStretchPopoverHoodieBlue from "../assets/images-folder/products/variations/women-stretch-popover-hoodie-blue.jpg";
 import womenStretchPopoverHoodieGray from "../assets/images-folder/products/variations/women-stretch-popover-hoodie-gray.jpg";
+import blackHoodedFleeceSweatshirt from "../assets/images-folder/products/variations/black Hooded Fleece Sweatshirt.jpg";
 
 export const productsData = [
   {
@@ -122,9 +123,12 @@ export const productsData = [
     description:
       "Add a pop of color to your wardrobe with this 2-pack of adults' plain cotton T-shirts in vibrant teal. Made from soft, breathable 100% cotton, these T-shirts provide a comfortable fit for all-day wear, whether you're lounging at home, running errands, or layering under a jacket. Their durable construction and machine-washable fabric make them a practical and stylish choice for any casual occasion.",
     variations: [
-      { name: "Black", image: adultsPlainCottonTshirt2PackBlack },
-      { name: "Plus Black", image: adultsPlainCottonTshirt2PackPlusBlack },
-      { name: "Red", image: adultsPlainCottonTshirt2PackRed },
+      { name: "Sleek Classic Black", image: adultsPlainCottonTshirt2PackBlack },
+      {
+        name: "Plus Size Midnight Black",
+        image: adultsPlainCottonTshirt2PackPlusBlack,
+      },
+      { name: "Vibrant Crimson Red", image: adultsPlainCottonTshirt2PackRed },
     ],
   },
   {
@@ -170,8 +174,8 @@ export const productsData = [
     description:
       "Stay cozy and stylish with this vibrant yellow hooded fleece sweatshirt, designed for ultimate comfort in cooler weather. Made from soft, warm fleece, it features a spacious hood with drawstrings and a kangaroo pocket for practicality. Perfect for casual outings, lounging, or layering during outdoor activities, this sweatshirt combines durability with a relaxed fit for all-day wear.",
     variations: [
-      { name: "Teal", image: plainHoodedFleeceSweatshirtTeal },
-      { name: "Yellow", image: plainHoodedFleeceSweatshirtYellow },
+      { name: "Ocean Teal Breeze", image: plainHoodedFleeceSweatshirtTeal },
+      { name: "Midnight Shadow Black", image: blackHoodedFleeceSweatshirt },
     ],
   },
   {
@@ -183,7 +187,9 @@ export const productsData = [
     priceCents: 4499,
     description:
       "Transform your bathroom into a spa-like retreat with this 6-piece luxury towel set in sophisticated graphite gray. Crafted from ultra-soft, highly absorbent cotton, these towels offer a plush feel and exceptional drying power. The set includes bath towels, hand towels, and washcloths, all designed to retain their softness and color after repeated washes, adding elegance and comfort to your daily routine.",
-    variations: [{ name: "4-Piece Set", image: luxuryTowerSet4Piece }],
+    variations: [
+      { name: "Compact Everyday 4-Piece", image: luxuryTowerSet4Piece },
+    ],
   },
   {
     id: "3fdfe8d6-9a15-4979-b459-585b0d0545b9",
@@ -194,7 +200,12 @@ export const productsData = [
     priceCents: 1999,
     description:
       "Keep your clothes fresh and clean with this high-performance liquid laundry detergent, formulated for up to 110 loads. Its powerful cleaning agents tackle tough stains while being gentle on fabrics, leaving your laundry with a long-lasting fresh scent. Suitable for all washing machines, including high-efficiency models, this detergent ensures vibrant colors and pristine results with every wash.",
-    variations: [{ name: "Lavender", image: liquidLaundryDetergentLavender }],
+    variations: [
+      {
+        name: "Soothing Lavender Essence",
+        image: liquidLaundryDetergentLavender,
+      },
+    ],
   },
   {
     id: "58b4fc92-e98c-42aa-8c55-b6b79996769a",
@@ -227,7 +238,7 @@ export const productsData = [
     priceCents: 1599,
     description:
       "Shield your eyes in style with these classic round sunglasses, featuring a timeless black frame design. Equipped with UV-protective lenses, they offer excellent sun protection while enhancing your look for any occasion. Lightweight and comfortable, these sunglasses are perfect for driving, outdoor activities, or adding a chic touch to your everyday outfits.",
-    variations: [{ name: "Gold", image: roundSunglassesGold }],
+    variations: [{ name: "Elegant Gold Glow", image: roundSunglassesGold }],
   },
   {
     id: "04701903-bc79-49c6-bc11-1af7e3651358",
@@ -261,8 +272,8 @@ export const productsData = [
     description:
       "Stay cool and stylish with these men’s slim-fit summer shorts in classic gray. Made from lightweight, breathable fabric, they offer a comfortable fit for warm weather, whether you're heading to a barbecue or a casual day out. The tailored design and durable stitching ensure a polished look and long-lasting wear, perfect for summer adventures.",
     variations: [
-      { name: "Beige", image: menSlimFitSummerShortsBeige },
-      { name: "Black", image: menSlimFitSummerShortsBlack },
+      { name: "Sandy Desert Beige", image: menSlimFitSummerShortsBeige },
+      { name: "Urban Night Black", image: menSlimFitSummerShortsBlack },
     ],
   },
   {
@@ -319,8 +330,8 @@ export const productsData = [
     description:
       "Stay comfortable and chic with this women’s stretch popover hoodie in timeless black. Made from a soft, stretchy fabric blend, it offers a relaxed fit ideal for workouts, casual outings, or cozy days at home. The adjustable hood and spacious front pocket add functionality, while the durable design ensures long-lasting wear for any active lifestyle.",
     variations: [
-      { name: "Blue", image: womenStretchPopoverHoodieBlue },
-      { name: "Gray", image: womenStretchPopoverHoodieGray },
+      { name: "Sky Blue Serenity", image: womenStretchPopoverHoodieBlue },
+      { name: "Cozy Storm Gray", image: womenStretchPopoverHoodieGray },
     ],
   },
   {
@@ -344,8 +355,8 @@ export const productsData = [
     description:
       "Step out in style with these women’s black knit ballet flats, combining elegance with everyday comfort. The lightweight, breathable knit upper molds to your feet, while the cushioned insole provides support for all-day wear. Perfect for work, casual outings, or travel, these versatile flats offer a chic, slip-on design that pairs effortlessly with any outfit.",
     variations: [
-      { name: "Gray", image: womenKnitBalletFlatGray },
-      { name: "Leopard", image: womenKnitBalletFlatLeopard },
+      { name: "Soft Dove Gray", image: womenKnitBalletFlatGray },
+      { name: "Wild Leopard Safari", image: womenKnitBalletFlatLeopard },
     ],
   },
   {
@@ -358,8 +369,8 @@ export const productsData = [
     description:
       "Tee off in style with this men’s regular-fit quick-dry golf polo shirt in vibrant blue. Crafted from moisture-wicking, breathable fabric, it keeps you cool and comfortable on the course or during any active pursuit. The classic polo design with a three-button placket offers a polished look, perfect for golf, casual outings, or warm-weather adventures.",
     variations: [
-      { name: "Black", image: menGolfPoloTShirtBlack },
-      { name: "Red", image: menGolfPoloTShirtRed },
+      { name: "Sharp Onyx Black", image: menGolfPoloTShirtBlack },
+      { name: "Fiery Scarlet Red", image: menGolfPoloTShirtRed },
     ],
   },
   {
@@ -372,7 +383,7 @@ export const productsData = [
     description:
       "Keep your space clean and organized with this 50-liter trash can, featuring a convenient foot pedal for hands-free operation. Its sleek stainless steel design adds a modern touch to any kitchen or office, while the large capacity reduces the need for frequent emptying. The soft-close lid and durable construction ensure long-lasting, odor-free performance.",
     variations: [
-      { name: "30 Liter Tall", image: trashCanWithFootPedal30LiterTall },
+      { name: "Slim 30-Liter Tower", image: trashCanWithFootPedal30LiterTall },
     ],
   },
   {
@@ -385,9 +396,9 @@ export const productsData = [
     description:
       "Refresh your bedroom with this blue twin duvet cover set, crafted from soft, breathable microfiber for a cozy night’s sleep. The set includes a duvet cover and matching pillowcases, featuring a calming blue hue that complements any decor. Its durable, fade-resistant fabric is machine-washable, making it a stylish and practical choice for everyday comfort.",
     variations: [
-      { name: "Blue Queen", image: duvetCoverSetBlueQueen },
-      { name: "Red Queen", image: duvetCoverSetRedQueen },
-      { name: "Red Twin", image: duvetCoverSetRedTwin },
+      { name: "Royal Azure Queen", image: duvetCoverSetBlueQueen },
+      { name: "Passionate Ruby Queen", image: duvetCoverSetRedQueen },
+      { name: "Crimson Flame Twin", image: duvetCoverSetRedTwin },
     ],
   },
   {
@@ -411,8 +422,8 @@ export const productsData = [
     description:
       "Elevate your wardrobe with these men’s slim-fit chino pants in classic beige, offering a polished yet comfortable look. Crafted from a durable cotton blend, they feature a tailored fit that’s perfect for both professional settings and casual outings. With multiple pockets and a versatile design, these chinos are a timeless addition to any modern closet.",
     variations: [
-      { name: "Black", image: menChinoPantsBlack },
-      { name: "Green", image: menChinoPantsGreen },
+      { name: "Ebony Shadow Black", image: menChinoPantsBlack },
+      { name: "Forest Emerald Green", image: menChinoPantsGreen },
     ],
   },
   {
@@ -424,7 +435,9 @@ export const productsData = [
     priceCents: 6999,
     description:
       "Power through your workouts with these men’s green athletic shoes, designed for performance and style. Featuring a breathable mesh upper and cushioned insole, they provide excellent support and comfort for running, training, or gym sessions. The durable rubber outsole ensures superior traction, making these shoes a reliable choice for any active lifestyle.",
-    variations: [{ name: "Black", image: menAthleticShoesBlack }],
+    variations: [
+      { name: "Stealth Phantom Black", image: menAthleticShoesBlack },
+    ],
   },
   {
     id: "f1a91d3a-291c-4d91-9e5f-d3a86e0a11b1",
@@ -435,7 +448,9 @@ export const productsData = [
     priceCents: 2499,
     description:
       "Make a bold statement with these men’s navigator sunglasses in rich brown, offering a classic design with modern flair. The polarized lenses provide superior UV protection and reduce glare, ideal for driving, outdoor sports, or casual wear. Lightweight and durable, these sunglasses combine comfort and style for everyday adventures.",
-    variations: [{ name: "Silver", image: menNavigatorSunglassesSilver }],
+    variations: [
+      { name: "Polished Sterling Silver", image: menNavigatorSunglassesSilver },
+    ],
   },
   {
     id: "b2bfa5e1-1b2a-4c15-8c25-bd4c2c8a57f7",
@@ -468,7 +483,9 @@ export const productsData = [
     priceCents: 3599,
     description:
       "Stay cozy and on-trend with these women’s French terry fleece joggers in a stylish camo print. Made from soft, breathable fabric, they offer a relaxed fit with a tapered leg, perfect for lounging, workouts, or casual outings. The elastic waistband and side pockets add comfort and practicality, making these joggers a versatile wardrobe staple.",
-    variations: [{ name: "Gray", image: womenFrenchTerryFleeceJoggerGray }],
+    variations: [
+      { name: "Urban Fog Gray", image: womenFrenchTerryFleeceJoggerGray },
+    ],
   },
   {
     id: "a8c5f7e4-1a7d-4c5a-8d2b-4c5e1f2b6c7d",
@@ -578,7 +595,9 @@ export const productsData = [
     priceCents: 3999,
     description:
       "Stay warm and stylish with this men’s red cozy fleece zip-up hoodie, perfect for chilly days and casual outings. Made from soft, high-quality fleece, it features a full-length zipper, adjustable hood, and spacious pockets for added convenience. Ideal for layering or standalone wear, this hoodie offers a comfortable fit and vibrant color that elevates your everyday wardrobe.",
-    variations: [{ name: "Black", image: menCozyFleeceZipUpHoodieBlack }],
+    variations: [
+      { name: "Deep Charcoal Black", image: menCozyFleeceZipUpHoodieBlack },
+    ],
   },
   {
     id: "e7f8a9b1-2c3d-4e5f-6a7b-8c9d0e1f2a3b",

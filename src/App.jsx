@@ -7,8 +7,9 @@ import AboutUsPage from "./Pages/AboutUsPage";
 import Contact from "./Pages/Contact";
 import Header from "./Components/Header";
 import Cart from "./Pages/Cart";
+import ThankYouPage from "./Components/ThankYouPage";
 import ScrollToTop from "./Components/ScrollToTop";
-
+import PlaceHolderPage from "./Components/PlaceHolderPage";
 const App = () => {
   return (
     <>
@@ -21,6 +22,8 @@ const App = () => {
         <Route path="/about" element={<AboutUsPage />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/product/:id" element={<ProductDetails />} />
+        <Route path="/thank-you" element={<ThankYouPage />} />
+        <Route path="/:page" element={<PlaceHolderPage />} />
       </Routes>
     </>
   );

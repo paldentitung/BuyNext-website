@@ -47,10 +47,10 @@ const ShippingStep = ({
           <p className="text-gray-600">Enter your delivery information below</p>
         </div>
 
-        {/* Address Form */}
+        {/* Form */}
         <form
           onSubmit={(e) => {
-            e.preventDefault(); // prevent full page reload
+            e.preventDefault(); // prevent page reload
             onNextStep({ shippingMethod, shippingDate });
           }}
           className="bg-white p-4 rounded-lg shadow space-y-3"
@@ -121,61 +121,61 @@ const ShippingStep = ({
               <option>Canada</option>
             </select>
           </div>
-        </form>
 
-        {/* Shipping Method */}
-        <div className="bg-white p-4 rounded-lg shadow space-y-3">
-          <h3 className="font-semibold text-gray-700 mb-2">
-            Choose Shipping Method
-          </h3>
-          {[
-            { id: "standard", label: "Standard Shipping", cost: "Free" },
-            { id: "express", label: "Express Delivery", cost: "$10.00" },
-            { id: "nextday", label: "Next-Day Air", cost: "$20.00" },
-          ].map((method) => (
-            <label
-              key={method.id}
-              className="flex items-start gap-3 border p-3 rounded cursor-pointer hover:shadow-sm"
-            >
-              <input
-                type="radio"
-                name="shipping"
-                value={method.id}
-                checked={shippingMethod === method.id}
-                onChange={(e) => setShippingMethod(e.target.value)}
-                className="w-4 h-4 text-blue-600 mt-1"
-                required
-              />
-              <div className="flex-1">
-                <div className="flex items-center justify-between">
-                  <span className="font-medium">{method.label}</span>
-                  <span className="font-bold">{method.cost}</span>
+          {/* Shipping Method */}
+          <div className="bg-gray-50 p-3 rounded space-y-2">
+            <h3 className="font-semibold text-gray-700">
+              Choose Shipping Method
+            </h3>
+            {[
+              { id: "standard", label: "Standard Shipping", cost: "Free" },
+              { id: "express", label: "Express Delivery", cost: "$10.00" },
+              { id: "nextday", label: "Next-Day Air", cost: "$20.00" },
+            ].map((method) => (
+              <label
+                key={method.id}
+                className="flex items-start gap-3 border p-3 rounded cursor-pointer hover:shadow-sm"
+              >
+                <input
+                  type="radio"
+                  name="shipping"
+                  value={method.id}
+                  checked={shippingMethod === method.id}
+                  onChange={(e) => setShippingMethod(e.target.value)}
+                  className="w-4 h-4 mt-1"
+                  required
+                />
+                <div className="flex-1">
+                  <div className="flex items-center justify-between">
+                    <span className="font-medium">{method.label}</span>
+                    <span className="font-bold">{method.cost}</span>
+                  </div>
+                  <p className="text-sm text-gray-600 ml-1">
+                    {methodDays[method.id]} • Estimated:{" "}
+                    {getEstimatedDate(method.id)}
+                  </p>
                 </div>
-                <p className="text-sm text-gray-600 ml-1">
-                  {methodDays[method.id]} • Estimated:{" "}
-                  {getEstimatedDate(method.id)}
-                </p>
-              </div>
-            </label>
-          ))}
-        </div>
+              </label>
+            ))}
+          </div>
 
-        {/* Action Buttons */}
-        <div className="flex gap-3">
-          <button
-            onClick={onBackStep}
-            className="flex-1 border rounded px-4 py-2"
-          >
-            ← Back
-          </button>
-          <button
-            type="submit"
-            onClick={() => onNextStep({ shippingMethod, shippingDate })}
-            className="flex-1 bg-blue-600 text-white px-4 py-2 rounded"
-          >
-            Continue →
-          </button>
-        </div>
+          {/* Buttons */}
+          <div className="flex gap-3 mt-4">
+            <button
+              type="button"
+              onClick={onBackStep}
+              className="flex-1 border rounded px-4 py-2"
+            >
+              ← Back
+            </button>
+            <button
+              type="submit"
+              className="flex-1 bg-blue-600 text-white px-4 py-2 rounded"
+            >
+              Continue →
+            </button>
+          </div>
+        </form>
       </div>
     </div>
   );

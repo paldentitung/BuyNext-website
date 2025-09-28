@@ -8,9 +8,32 @@ const PaymentStep = ({
   onNextStep,
 }) => {
   const [showCardForm, setShowCardForm] = useState(paymentMethod === "credit");
+  const [cardNumber, setCardNumber] = useState("");
+  const [expiry, setExpiry] = useState("");
+  const [cvv, setCvv] = useState("");
+  const [error, setError] = useState("");
+
   const handlePaymentChange = (method) => {
     setPaymentMethod(method);
     setShowCardForm(method === "credit");
+  };
+
+  const handleCompletePayment = () => {
+    if (paymentMethod === "credit") {
+      // basic validation
+      if (cardNumber.length < 16) {
+        return setError("Please enter a valid card number.");
+      }
+      if (!/^\d{2}\/\d{2}$/.test(expiry)) {
+        return setError("Expiry must be in MM/YY format.");
+      }
+      if (cvv.length < 3) {
+        return setError("Please enter a valid CVV.");
+      }
+    }
+
+    setError("");
+    onNextStep(); // only proceed if valid
   };
 
   return (
@@ -99,6 +122,10 @@ const PaymentStep = ({
                     type="text"
                     placeholder="1234 5678 9012 3456"
                     maxLength={19}
+                    value={cardNumber}
+                    onChange={(e) =>
+                      setCardNumber(e.target.value.replace(/\D/g, ""))
+                    }
                     className="w-full border border-gray-300 p-2 rounded focus:ring-2 focus:ring-blue-500"
                   />
                 </div>
@@ -107,6 +134,8 @@ const PaymentStep = ({
                     type="text"
                     placeholder="MM/YY"
                     maxLength={5}
+                    value={expiry}
+                    onChange={(e) => setExpiry(e.target.value)}
                     className="w-full border border-gray-300 p-2 rounded focus:ring-2 focus:ring-blue-500"
                   />
                 </div>
@@ -115,6 +144,8 @@ const PaymentStep = ({
                     type="text"
                     placeholder="CVV"
                     maxLength={3}
+                    value={cvv}
+                    onChange={(e) => setCvv(e.target.value.replace(/\D/g, ""))}
                     className="w-full border border-gray-300 p-2 rounded focus:ring-2 focus:ring-blue-500"
                   />
                 </div>
@@ -122,6 +153,9 @@ const PaymentStep = ({
             </div>
           )}
         </div>
+
+        {/* Error message */}
+        {error && <p className="text-red-600 font-medium text-sm">{error}</p>}
 
         {/* Security Badge */}
         <div className="bg-green-50 border border-green-200 rounded-lg p-3 text-center">
@@ -139,7 +173,7 @@ const PaymentStep = ({
             ← Back to Shipping
           </button>
           <button
-            onClick={onNextStep}
+            onClick={handleCompletePayment}
             className="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700"
           >
             Complete Payment →
