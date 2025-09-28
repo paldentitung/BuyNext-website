@@ -20,6 +20,15 @@ The project uses React Router for client-side routing, React Icons for UI elemen
 - **Placeholder Pages**: Customizable pages for company info, blog, terms, privacy, and support.
 - **Navigation**: Back button integration with React Router's `useNavigate`.
 
+## Future Improvements
+
+Planned enhancements to evolve this project into a full-featured e-commerce platform:
+
+- **Backend Integration**: Add a Node.js/Express server or Next.js API routes to handle dynamic data fetching, user sessions, and API endpoints for products, orders, and inventory.
+- **Database Implementation**: Integrate a robust database like MongoDB (for NoSQL flexibility) or PostgreSQL (for relational data) to store user accounts, product catalogs, reviews, and order history, replacing static data.
+- **UI/UX Polish**: Enhance the interface with Framer Motion for smooth animations, improved accessibility (ARIA labels, keyboard navigation), advanced search/filter components, and a shopping cart/checkout flow with real-time updates.
+- **Additional Features**: Implement user authentication (JWT or Auth0), payment processing (Stripe integration), SEO optimizations (React Helmet), progressive web app (PWA) support, and end-to-end testing with Jest and Cypress.
+
 ## Tech Stack
 
 - **Frontend**: React 18+, React Router DOM
@@ -99,7 +108,6 @@ src/
 │   └── productsData.js      # Product catalog
 ├── App.jsx                  # Main app with routing
 └── index.js                 # Entry point
-
 ```
 
 ## Contributing
