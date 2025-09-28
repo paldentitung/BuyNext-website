@@ -83,14 +83,6 @@ Products are defined in `productsData.js` with fields like:
 - `description`: Detailed text
 - `variations`: Array of `{ name: string, image: string }`
 
-## Screenshots
-
-<!-- Add screenshots here, e.g., via GitHub uploads -->
-
-- **Homepage**: ![Homepage](screenshots/homepage.png)
-- **Product Page**: ![Product Detail](screenshots/product-detail.png)
-- **Placeholder Page**: ![About Page](screenshots/about.png)
-
 ## Project Structure
 
 ```
@@ -120,6 +112,15 @@ We welcome contributions for new features, bug fixes, or UI improvements!
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Resources
+
+- **Product Images**: [UserSimpleDev](https://usersimpledev.com/) – Product images used in this project
+- **Images & Graphics**:
+  - [Unsplash](https://unsplash.com/) – Free high-quality photos
+  - [Freepik](https://www.freepik.com/) – Free and premium vector graphics
+- **Icons**:
+  - [React Icons](https://react-icons.github.io/react-icons/) – Icons used in this project
 
 ## Contact
 
