@@ -93,10 +93,13 @@ src/
 │       └── variations/
 ├── components/
 │   └── PlaceHolderPage.jsx  # Dynamic content pages
+├── context/
+│   └── CartContext.jsx      # Context for managing cart state
 ├── data/
 │   └── productsData.js      # Product catalog
 ├── App.jsx                  # Main app with routing
 └── index.js                 # Entry point
+
 ```
 
 ## Contributing
@@ -115,7 +118,11 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Resources
 
-- **Product Images**: [UserSimpleDev](https://usersimpledev.com/) – Product images used in this project
+- **Product Images**: [UserSimpleDev](https://www.youtube.com/@SuperSimpleDev) – Product images used in this project
+- **Tutorials & Ideas**: [SupersimpleDev YouTube](https://www.youtube.com/@SuperSimpleDev) – Ideas and tutorials
+- **AI Assistance**:
+  - [ChatGPT](https://chat.openai.com/) – AI assistant for coding and project guidance
+  - [Grok by Sourcegraph](https://sourcegraph.com/grok) – AI coding assistant for code search and suggestions
 - **Images & Graphics**:
   - [Unsplash](https://unsplash.com/) – Free high-quality photos
   - [Freepik](https://www.freepik.com/) – Free and premium vector graphics
