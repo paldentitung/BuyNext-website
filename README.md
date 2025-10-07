@@ -10,6 +10,12 @@ This is a modern, responsive e-commerce website built with React.js, designed to
 
 The project uses React Router for client-side routing, React Icons for UI elements, and Tailwind CSS for styling (inferred from class names in components). Product data is managed statically for demo purposes but can be easily integrated with a backend API.
 
+## 🌐 Live Demo
+
+Dive into the live version of GoBeyond:  
+[🔗 Visit BuyNext
+](https://buynext-website.netlify.app/)
+
 ## Features
 
 - **Product Catalog**: Browse products by category with search and filtering capabilities (extendable).
