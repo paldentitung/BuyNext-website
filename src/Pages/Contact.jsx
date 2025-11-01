@@ -25,7 +25,7 @@ const Contact = () => {
         </div>
 
         {/* Contact Info & Form */}
-        <ContactSection />
+        <ContactSection mode={mode} />
 
         {/* Map Section */}
         <div className="mt-12">
