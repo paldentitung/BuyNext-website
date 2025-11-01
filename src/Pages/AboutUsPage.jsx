@@ -5,8 +5,48 @@ import productManager from "../assets/techguy.jpg";
 import { Footer } from "../Components/Footer";
 import { useContext } from "react";
 import { ModeToggleContext } from "../context/ModeToggleContext";
+import { easeInOut, motion } from "framer-motion";
 const AboutUsPage = () => {
   const { mode } = useContext(ModeToggleContext);
+
+  const teamMembers = [
+    {
+      id: 1,
+      name: "Palden D.",
+      role: "Founder & CEO",
+      image: ceo_image,
+    },
+    {
+      id: 2,
+      name: "Team Member",
+      role: "Marketing Lead",
+      image: marketing_lead,
+    },
+    {
+      id: 3,
+      name: "Team Member",
+      role: "Product Manager",
+      image: productManager,
+    },
+  ];
+
+  const aboutHighlights = [
+    {
+      id: 1,
+      title: "Our Mission",
+      text: "Deliver high-quality products with a seamless shopping experience.",
+    },
+    {
+      id: 2,
+      title: "Our Vision",
+      text: "Be the go-to e-commerce platform for customers worldwide.",
+    },
+    {
+      id: 3,
+      title: "Our Values",
+      text: "Customer first, quality products, integrity, and innovation.",
+    },
+  ];
 
   return (
     <>
@@ -16,75 +56,74 @@ const AboutUsPage = () => {
         }`}
       >
         <div className="max-w-5xl mx-auto text-center space-y-8">
-          <h1 className="text-4xl font-bold text-blue-500">About BuyNext</h1>
-          <p className=" text-lg">
-            At BuyNext, we believe shopping should be simple, enjoyable, and
-            inspiring. Our mission is to provide high-quality products at great
-            prices while delivering excellent customer service. We strive to
-            make your online shopping experience smooth, secure, and fun.
-          </p>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, ease: "easeOut" }}
+          >
+            <h1 className="text-4xl font-bold text-blue-500">About BuyNext</h1>
+            <p className=" text-lg">
+              At BuyNext, we believe shopping should be simple, enjoyable, and
+              inspiring. Our mission is to provide high-quality products at
+              great prices while delivering excellent customer service. We
+              strive to make your online shopping experience smooth, secure, and
+              fun.
+            </p>
+          </motion.div>
 
           <div className="grid md:grid-cols-3 gap-8 mt-10">
-            <div className=" p-6 rounded-lg shadow hover:shadow-lg transition hover:cursor-pointer">
-              <h3 className="font-semibold text-xl mb-2">Our Mission</h3>
-              <p className="">
-                Deliver high-quality products with a seamless shopping
-                experience.
-              </p>
-            </div>
-            <div className=" p-6 rounded-lg shadow hover:shadow-lg transition hover:cursor-pointer">
-              <h3 className="font-semibold text-xl mb-2">Our Vision</h3>
-              <p className="">
-                Be the go-to e-commerce platform for customers worldwide.
-              </p>
-            </div>
-            <div className="p-6 rounded-lg shadow hover:shadow-lg transition hover:cursor-pointer">
-              <h3 className="font-semibold text-xl mb-2">Our Values</h3>
-              <p className="">
-                Customer first, quality products, integrity, and innovation.
-              </p>
-            </div>
+            {aboutHighlights.map((item, index) => {
+              return (
+                <motion.div
+                  key={item.id}
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{
+                    duration: 0.3,
+                    delay: index * 0.15,
+                    ease: "easeOut",
+                  }}
+                  className=" p-6 rounded-lg shadow hover:shadow-lg transition hover:cursor-pointer"
+                >
+                  <h3 className="font-semibold text-xl mb-2">{item.title}</h3>
+                  <p className="">{item.text}</p>
+                </motion.div>
+              );
+            })}
           </div>
         </div>
 
         <div className="mt-16 max-w-5xl mx-auto text-center">
           <h2 className="text-3xl font-bold  mb-8">Meet the Team</h2>
           <div className="grid md:grid-cols-3 gap-8">
-            <div className=" p-6 rounded-lg shadow-md hover:shadow-lg transition">
-              <div className="overflow-hidden rounded-full w-32 h-32 mx-auto mb-4">
-                <img
-                  src={ceo_image}
-                  alt="Founder"
-                  className="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
-                />
-              </div>
-              <h3 className="font-semibold text-xl">Palden D.</h3>
-              <p className=" text-sm">Founder & CEO</p>
-            </div>
-            <div className=" p-6 rounded-lg shadow hover:shadow-lg transition">
-              <div className="overflow-hidden rounded-full w-32 h-32 mx-auto mb-4">
-                <img
-                  src={marketing_lead}
-                  alt="Marketing Lead"
-                  className="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
-                />
-              </div>
-              <h3 className="font-semibold text-xl">Team Member</h3>
-              <p className=" text-sm">Marketing Lead</p>
-            </div>
-            <div className=" p-6 rounded-lg shadow hover:shadow-lg transition">
-              <div className="overflow-hidden rounded-full w-32 h-32 mx-auto mb-4">
-                <img
-                  src={productManager}
-                  alt="Product Manager"
-                  className="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
-                />
-              </div>
-              <h3 className="font-semibold text-xl">Team Member</h3>
-              <p className=" text-sm">Product Manager</p>
-            </div>
+            {teamMembers.map((member, index) => (
+              <motion.div
+                className=" p-6 rounded-lg shadow-md hover:shadow-lg transition"
+                key={member.id}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{
+                  duration: 0.3,
+                  delay: index * 0.15,
+                  ease: "easeOut",
+                }}
+              >
+                <div className="overflow-hidden rounded-full w-32 h-32 mx-auto mb-4">
+                  <img
+                    src={member.image}
+                    alt="Founder"
+                    className="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
+                  />
+                </div>
+                <h3 className="font-semibold text-xl">{member.name}</h3>
+                <p className=" text-sm">{member.role}</p>
+              </motion.div>
+            ))}
           </div>
         </div>
+
         <div className="mt-16 text-center">
           <h2 className="text-2xl font-bold mb-4">Ready to shop with us?</h2>
           <a

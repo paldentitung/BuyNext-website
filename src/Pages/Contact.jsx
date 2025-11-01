@@ -3,7 +3,7 @@ import ContactSection from "../Components/ContactSection";
 import { Footer } from "../Components/Footer";
 import { useContext } from "react";
 import { ModeToggleContext } from "../context/ModeToggleContext";
-
+import { motion } from "framer-motion";
 const Contact = () => {
   const { mode } = useContext(ModeToggleContext);
   return (
@@ -14,7 +14,16 @@ const Contact = () => {
         }`}
       >
         {/* Page Header */}
-        <div className="flex flex-col items-center gap-4 text-center mb-12">
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{
+            duration: 0.3,
+            ease: "easeOut",
+          }}
+          className="flex flex-col items-center gap-4 text-center mb-12"
+        >
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-blue-500">
             Contact Us
           </h1>
@@ -22,7 +31,7 @@ const Contact = () => {
             Have questions about your order, products, or returns? Our support
             team is here to help you promptly and efficiently.
           </p>
-        </div>
+        </motion.div>
 
         {/* Contact Info & Form */}
         <ContactSection mode={mode} />

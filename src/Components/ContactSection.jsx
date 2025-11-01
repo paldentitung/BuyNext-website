@@ -1,6 +1,6 @@
 import React from "react";
 import { FaPhone, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
-
+import { motion } from "framer-motion";
 const ContactSection = ({ mode }) => {
   const handleSubmit = (e) => {
     e.preventdefault();
@@ -14,7 +14,16 @@ const ContactSection = ({ mode }) => {
     >
       <div className=" grid md:grid-cols-2 gap-10">
         {/* Contact Info */}
-        <div className="flex flex-col  gap-6">
+        <motion.div
+          initial={{ opacity: 0, x: -100 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{
+            duration: 0.3,
+
+            ease: "easeOut",
+          }}
+          className="flex flex-col  gap-6"
+        >
           <h2 className="text-3xl md:text-4xl font-bold">Contact Us</h2>
           <p>
             Need help or have questions about our products? Our support team is
@@ -34,10 +43,20 @@ const ContactSection = ({ mode }) => {
               <span>123 Market Street, Kathmandu, Nepal</span>
             </div>
           </div>
-        </div>
+        </motion.div>
 
         {/* Contact Form */}
-        <form className="flex flex-col gap-5" onSubmit={handleSubmit}>
+        <motion.form
+          initial={{ opacity: 0, x: 100 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{
+            duration: 0.3,
+
+            ease: "easeOut",
+          }}
+          className="flex flex-col gap-5"
+          onSubmit={handleSubmit}
+        >
           <input
             type="text"
             placeholder="Your Name"
@@ -62,7 +81,7 @@ const ContactSection = ({ mode }) => {
           >
             Send Message
           </button>
-        </form>
+        </motion.form>
       </div>
     </section>
   );

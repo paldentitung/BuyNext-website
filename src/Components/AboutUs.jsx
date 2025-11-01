@@ -1,8 +1,15 @@
 import React from "react";
-
+import { motion } from "framer-motion";
 const AboutUs = ({ mode }) => {
   return (
-    <div
+    <motion.div
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true }}
+      transition={{
+        duration: 0.3,
+        ease: "easeOut",
+      }}
       className={`w-full flex justify-center items-center flex-col space-y-5  h-[600px] px-[5%] ${
         mode === "light" ? "bg-white" : "bg-gray-900 text-white"
       } `}
@@ -24,7 +31,7 @@ const AboutUs = ({ mode }) => {
         At BuyNext, it’s not just about buying products—it’s about elevating
         your everyday life.
       </p>
-    </div>
+    </motion.div>
   );
 };
 
