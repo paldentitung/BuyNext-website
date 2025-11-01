@@ -5,6 +5,7 @@ const ShippingStep = ({
   onBackStep,
   shippingDate,
   setShippingDate,
+  mode,
 }) => {
   const [shippingMethod, setShippingMethod] = useState("standard");
 
@@ -39,12 +40,16 @@ const ShippingStep = ({
   }, [shippingMethod, setShippingDate]);
 
   return (
-    <div className="min-h-screen bg-blue-50 py-8">
+    <div
+      className={`min-h-screen  py-8 ${
+        mode === "light" ? "bg-white" : "bg-gray-900 text-white"
+      }`}
+    >
       <div className="max-w-4xl mx-auto space-y-6 px-4">
         {/* Header */}
         <div>
-          <h2 className="text-2xl font-bold text-gray-800">Shipping Details</h2>
-          <p className="text-gray-600">Enter your delivery information below</p>
+          <h2 className="text-2xl font-bold ">Shipping Details</h2>
+          <p className="">Enter your delivery information below</p>
         </div>
 
         {/* Form */}
@@ -53,7 +58,9 @@ const ShippingStep = ({
             e.preventDefault(); // prevent page reload
             onNextStep({ shippingMethod, shippingDate });
           }}
-          className="bg-white p-4 rounded-lg shadow space-y-3"
+          className={`${
+            mode === "light" ? "bg-white" : "bggray-900 text-whtie"
+          } p-4 rounded-lg shadow space-y-3`}
         >
           <div>
             <label className="block text-sm font-medium">Full Name</label>
@@ -105,7 +112,7 @@ const ShippingStep = ({
           <div>
             <label className="block text-sm font-medium">Postal Code</label>
             <input
-              type="text"
+              type=""
               placeholder="10001"
               required
               className="w-full border p-2 rounded"
@@ -123,10 +130,8 @@ const ShippingStep = ({
           </div>
 
           {/* Shipping Method */}
-          <div className="bg-gray-50 p-3 rounded space-y-2">
-            <h3 className="font-semibold text-gray-700">
-              Choose Shipping Method
-            </h3>
+          <div className=" p-3 rounded space-y-2">
+            <h3 className="font-semibold">Choose Shipping Method</h3>
             {[
               { id: "standard", label: "Standard Shipping", cost: "Free" },
               { id: "express", label: "Express Delivery", cost: "$10.00" },
@@ -150,7 +155,7 @@ const ShippingStep = ({
                     <span className="font-medium">{method.label}</span>
                     <span className="font-bold">{method.cost}</span>
                   </div>
-                  <p className="text-sm text-gray-600 ml-1">
+                  <p className="text-sm  ml-1">
                     {methodDays[method.id]} • Estimated:{" "}
                     {getEstimatedDate(method.id)}
                   </p>

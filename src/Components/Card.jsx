@@ -3,7 +3,7 @@ import rating50 from "../assets/ratings/rating-50.png";
 import rating45 from "../assets/ratings/rating-45.png";
 import rating40 from "../assets/ratings/rating-40.png";
 import { Link } from "react-router-dom";
-const Card = ({ product }) => {
+const Card = ({ product, mode }) => {
   const { id, image, name, rating, priceCents } = product;
   const ratingImages = {
     4.0: rating40,
@@ -12,9 +12,15 @@ const Card = ({ product }) => {
   };
   return (
     <>
-      <div className=" rounded-md  h-auto lg:h-[400px]  flex justify-center items-center flex-col gap-3 shadow-md shadow-[rgb(230,230,230)] ">
+      <div
+        className={`rounded-md  h-auto lg:h-[400px]  flex justify-center items-center flex-col gap-5 shadow-md  ${
+          mode === "light"
+            ? "shadow-[rgb(230,230,230)]"
+            : " shadow-[rgba(0,0,0,0.3)]"
+        } `}
+      >
         <div className="h-1/2">
-          <img src={image} alt="" className="h-48 p-2  object-contain" />
+          <img src={image} alt="" className="h-48 p-2  object-contain   " />
         </div>
         <div className=" h-1/2 flex  flex-col  px-6 w-full">
           <h2 className="text-[20px]">{name}</h2>

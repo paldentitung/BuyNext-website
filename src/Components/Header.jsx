@@ -2,11 +2,12 @@ import React, { useState, useContext } from "react";
 import { FaShoppingCart, FaBars, FaSearch } from "react-icons/fa";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { CartContext } from "../context/CardContext";
-
+import { ModeToggleContext } from "../context/ModeToggleContext";
 const Header = () => {
   const [showMenu, setShowMenu] = useState(false);
   const navigate = useNavigate();
   const { cart } = useContext(CartContext);
+  const { mode, toggleMode } = useContext(ModeToggleContext);
 
   const cartCount = cart.reduce((total, item) => total + item.quantity, 0);
 
@@ -18,7 +19,11 @@ const Header = () => {
   ];
 
   return (
-    <div className="bg-white flex  lg:justify-around justify-between items-center p-6 border-b border-gray-300 relative">
+    <div
+      className={` flex  lg:justify-around justify-between items-center p-6  sticky top-0 z-50  ${
+        mode === "light" ? "bg-white text-black" : "bg-gray-800 text-white"
+      }`}
+    >
       {/* Logo */}
       <Link to="/" className="flex items-center gap-2">
         <div className="w-10 h-10 md:w-12 md:h-12 bg-blue-500 rounded-full flex justify-center items-center text-white font-bold italic text-lg md:text-xl">
@@ -37,7 +42,7 @@ const Header = () => {
             to={link.path}
             className={({ isActive }) =>
               "font-bold " +
-              (isActive ? "text-blue-500" : "text-gray-700 hover:text-blue-500")
+              (isActive ? "text-blue-500" : " hover:text-blue-500")
             }
           >
             {link.name}
@@ -57,6 +62,21 @@ const Header = () => {
           <span className="text-[18px]">{cartCount}</span>
         </Link>
 
+        <div
+          onClick={toggleMode}
+          className={` hidden md:flex w-12 h-6 rounded-2xl px-1  border  items-center cursor-pointer`}
+        >
+          <span
+            className={`w-4 h-4 rounded-full transition-all   duration-200     ${
+              mode === "light"
+                ? "translate-x-0 bg-blue-500   "
+                : " translate-x-6 bg-white "
+            } 
+     
+    `}
+          ></span>
+        </div>
+
         {/* Hamburger for mobile */}
         <div className="md:hidden flex  items-center ">
           <button
@@ -70,7 +90,11 @@ const Header = () => {
 
       {/* Mobile Menu */}
       {showMenu && (
-        <div className="fixed inset-0 z-50 bg-white flex flex-col gap-8 justify-center items-center transition-transform duration-300">
+        <div
+          className={`fixed inset-0 z-5 flex flex-col gap-8 justify-center items-center transition-transform duration-300 ${
+            mode === "light" ? "bg-white" : "bg-gray-900 text-white"
+          } `}
+        >
           <nav>
             <ul className="flex flex-col gap-6 items-center">
               {navLinks.map((link) => (
@@ -80,9 +104,7 @@ const Header = () => {
                   onClick={() => setShowMenu(false)}
                   className={({ isActive }) =>
                     "font-bold text-2xl " +
-                    (isActive
-                      ? "text-blue-500"
-                      : "text-gray-700 hover:text-blue-500")
+                    (isActive ? "text-blue-500" : " hover:text-blue-500")
                   }
                 >
                   {link.name}
@@ -97,6 +119,21 @@ const Header = () => {
           >
             &times;
           </button>
+
+          <div
+            onClick={toggleMode}
+            className={` flex w-14 h-6 rounded-2xl   border  items-center cursor-pointer`}
+          >
+            <span
+              className={`w-4 h-4 rounded-full transition-all   duration-200     ${
+                mode === "light"
+                  ? "translate-x-0 bg-blue-500   "
+                  : " translate-x-5 bg-white "
+              } 
+     
+    `}
+            ></span>
+          </div>
         </div>
       )}
     </div>

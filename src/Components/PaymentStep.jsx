@@ -6,6 +6,7 @@ const PaymentStep = ({
   onBackStep,
   shippingDate,
   onNextStep,
+  mode,
 }) => {
   const [showCardForm, setShowCardForm] = useState(paymentMethod === "credit");
   const [cardNumber, setCardNumber] = useState("");
@@ -37,7 +38,11 @@ const PaymentStep = ({
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8 px-4">
+    <div
+      className={`min-h-screen  py-8 px-4 ${
+        mode === "light" ? "bg-gray-50" : "bg-gray-900 text-white"
+      }`}
+    >
       <div className="w-full mx-auto flex flex-col max-w-2xl space-y-6">
         {/* Header */}
         <div className="flex items-center space-x-3">
@@ -57,22 +62,30 @@ const PaymentStep = ({
             </svg>
           </div>
           <div>
-            <h2 className="text-2xl font-bold text-gray-800">Secure Payment</h2>
-            <p className="text-gray-600">
+            <h2 className="text-2xl font-bold ">Secure Payment</h2>
+            <p className="">
               Estimated delivery: {shippingDate || "within 5-7 days"}
             </p>
           </div>
         </div>
 
         {/* Payment Methods Card */}
-        <div className="bg-white rounded-lg p-4 border border-gray-200">
-          <h3 className="text-lg font-semibold text-gray-700 mb-4">
-            Select Payment Method
-          </h3>
+        <div
+          className={` rounded-lg p-4 border ${
+            mode === "light"
+              ? "bg-white border-gray-200"
+              : "bg-gray-900 text-white"
+          }`}
+        >
+          <h3 className="text-lg font-semibold  mb-4">Select Payment Method</h3>
 
           <div className="space-y-2">
             {/* Credit/Debit Card */}
-            <label className="flex items-center gap-3 p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-50">
+            <label
+              className={`flex items-center gap-3 p-3 border  rounded-lg cursor-pointer ${
+                mode === "light" ? "hover:bg-gray-50" : "hover:bg-gray-700"
+              }`}
+            >
               <input
                 type="radio"
                 name="payment"
@@ -82,30 +95,28 @@ const PaymentStep = ({
                 className="w-4 h-4 text-blue-600"
               />
               <div className="flex-1">
-                <span className="font-medium text-gray-900">
-                  Credit / Debit Card
-                </span>
-                <p className="text-sm text-gray-600">
-                  Visa, Mastercard • Secure
-                </p>
+                <span className="font-medium ">Credit / Debit Card</span>
+                <p className="text-sm ">Visa, Mastercard • Secure</p>
               </div>
             </label>
 
             {/* PayPal */}
-            <label className="flex items-center gap-3 p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-50">
+            <label
+              className={`flex items-center gap-3 p-3 border  rounded-lg cursor-pointer ${
+                mode === "light" ? "hover:bg-gray-50" : "hover:bg-gray-700"
+              }`}
+            >
               <input
                 type="radio"
                 name="payment"
                 value="paypal"
                 checked={paymentMethod === "paypal"}
                 onChange={(e) => handlePaymentChange(e.target.value)}
-                className="w-4 h-4 text-blue-600"
+                className="w-4 h-4"
               />
               <div className="flex-1">
-                <span className="font-medium text-gray-900">PayPal</span>
-                <p className="text-sm text-gray-600">
-                  Pay securely with PayPal
-                </p>
+                <span className="font-medium">PayPal</span>
+                <p className="text-sm ">Pay securely with PayPal</p>
               </div>
             </label>
           </div>
@@ -113,9 +124,7 @@ const PaymentStep = ({
           {/* Card Form - Conditional */}
           {showCardForm && (
             <div className="mt-4 pt-4 border-t border-gray-200">
-              <h4 className="text-md font-semibold text-gray-700 mb-3">
-                Card Details
-              </h4>
+              <h4 className="text-md font-semibold  mb-3">Card Details</h4>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
                 <div className="md:col-span-2">
                   <input

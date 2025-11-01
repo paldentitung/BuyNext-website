@@ -1,17 +1,24 @@
 import React from "react";
 import ContactSection from "../Components/ContactSection";
 import { Footer } from "../Components/Footer";
+import { useContext } from "react";
+import { ModeToggleContext } from "../context/ModeToggleContext";
 
 const Contact = () => {
+  const { mode } = useContext(ModeToggleContext);
   return (
     <>
-      <div className="w-full min-h-screen bg-gray-50 py-16 px-5 md:px-20">
+      <div
+        className={`w-full min-h-screen  py-16 px-5 md:px-20 ${
+          mode === "light" ? "bg-white" : "bg-gray-900 text-white"
+        }`}
+      >
         {/* Page Header */}
         <div className="flex flex-col items-center gap-4 text-center mb-12">
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-blue-500">
             Contact Us
           </h1>
-          <p className="text-gray-700 max-w-2xl">
+          <p className=" max-w-2xl">
             Have questions about your order, products, or returns? Our support
             team is here to help you promptly and efficiently.
           </p>
@@ -22,7 +29,7 @@ const Contact = () => {
 
         {/* Map Section */}
         <div className="mt-12">
-          <h2 className="text-2xl font-semibold text-center mb-6 text-gray-800">
+          <h2 className="text-2xl font-semibold text-center mb-6 ">
             Our Location
           </h2>
           <div className="w-full h-64 md:h-96 rounded-lg overflow-hidden shadow-lg transition-all duration-300 hover:brightness-110">

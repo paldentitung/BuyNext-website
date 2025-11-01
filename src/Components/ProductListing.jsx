@@ -2,29 +2,67 @@ import React from "react";
 import Card from "./Card";
 import { productsData } from "../data/ProductsData";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { ModeToggleContext } from "../context/ModeToggleContext";
 const ProductListing = ({ showAll = false }) => {
   console.log(productsData);
   const [searchTerm, setSearchTerm] = useState("");
-  const searchItem = productsData.filter(
-    (product) =>
-      product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      product.category.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  const [filterItem, setFilterItem] = useState(null);
 
-  const showData = showAll ? searchItem : searchItem.slice(0, 12);
+  const matchedItems = productsData.filter((product) => {
+    const searchItem =
+      product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      product.category.toLowerCase().includes(searchTerm.toLowerCase);
+
+    const filterTerm = filterItem
+      ? product.category.toLowerCase() === filterItem.toLowerCase()
+      : true;
+    return searchItem && filterTerm;
+  });
+  const showData = showAll ? matchedItems : matchedItems.slice(0, 12);
+  const { mode } = useContext(ModeToggleContext);
 
   return (
     <>
-      <div className=" p-[5%] bg-white flex flex-col space-y-5">
-        <div className="w-full  flex justify-center items-center">
+      <div
+        className={` p-[5%]  flex flex-col space-y-5 min-h-screen ${
+          mode === "light" ? "bg-white text-black" : "bg-gray-800 text-white"
+        }`}
+      >
+        <div className="w-full  flex justify-center gap-1 flex-col items-center">
           {showAll && (
-            <input
-              type="search"
-              placeholder="search products..."
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="border w-3/4 outline-0 border-gray-400 p-3 rounded-md  transition-all duration-200 hover:shadow-md focus:shadow-sm "
-            />
+            <div className="w-full flex flex-col mx-auto max-w-6xl items-center justify-center space-y-6">
+              <input
+                type="search"
+                placeholder="search products..."
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="border w-full outline-0  p-3 rounded-md  transition-all duration-200 hover:shadow-md focus:shadow-sm "
+              />
+              <div className={`flex self-end items-center space-x-1 `}>
+                <label htmlFor="filter">Select:</label>
+                <select
+                  className={` p-2 outline-0 border  rounded-md cursor-pointer ${
+                    mode === "light"
+                      ? "bg-gray-50 text-black"
+                      : "bg-gray-900 text-white"
+                  }`}
+                  onChange={(e) => setFilterItem(e.target.value)}
+                >
+                  <option value="clothing">Clothing</option>
+                  <option value="sports">Sports</option>
+                  <option value="Kitchen">Kitchen</option>
+                  <option value="home">Home</option>
+                  <option value="footwear">Footwear</option>
+                  <option value="Accessories">Accessories</option>
+                  <option value="Household">Household</option>
+                  <option value="Jewelry">Jewelry</option>
+                  <option value="Furniture">Furniture</option>
+                  <option value="fitness">Fitness</option>
+                  <option value="office">Office</option>
+                  <option value="Electronics">Electronics</option>
+                </select>
+              </div>
+            </div>
           )}
         </div>
         <div className="flex justify-center items-center ">
@@ -38,7 +76,7 @@ const ProductListing = ({ showAll = false }) => {
           ) : (
             <>
               {showData.map((product, index) => (
-                <Card key={index} product={product} />
+                <Card key={index} product={product} mode={mode} />
               ))}
             </>
           )}

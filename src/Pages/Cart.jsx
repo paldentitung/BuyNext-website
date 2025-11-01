@@ -5,6 +5,8 @@ import ShippingStep from "../Components/ShippingStep";
 import PaymentStep from "../Components/PaymentStep";
 import OrderReview from "../Components/OrderReview";
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { ModeToggleContext } from "../context/ModeToggleContext";
 const Cart = () => {
   const [currentStep, setCurrentStep] = useState(1);
   const [shippingDate, setShippingDate] = useState();
@@ -31,9 +33,10 @@ const Cart = () => {
     // Navigate to ThankYou page with state
     navigate("/thank-you", { state: { order: orderData } });
   };
+  const { mode } = useContext(ModeToggleContext);
   return (
     <div className="bg-white">
-      {currentStep === 1 && <CartStep onNextStep={onNextStep} />}
+      {currentStep === 1 && <CartStep onNextStep={onNextStep} mode={mode} />}
       {currentStep === 2 && (
         <ShippingStep
           onBackStep={onBackStep}
@@ -42,6 +45,7 @@ const Cart = () => {
           setShippingDate={setShippingDate}
           shippingMethod={shippingMethod}
           setShippingMethod={setShippingMethod}
+          mode={mode}
         />
       )}
       {currentStep === 3 && (
@@ -51,6 +55,7 @@ const Cart = () => {
           onNextStep={() => onNextStep({ paymentMethod })} // use onNextStep, not handleNext
           paymentMethod={paymentMethod}
           setPaymentMethod={setPaymentMethod}
+          mode={mode}
         />
       )}
 
@@ -61,6 +66,7 @@ const Cart = () => {
           paymentMethod={paymentMethod}
           onBack={onBackStep} // use your existing back function
           onPlaceOrder={handlePlaceOrder}
+          mode={mode}
         />
       )}
     </div>

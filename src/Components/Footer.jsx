@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { ModeToggleContext } from "../context/ModeToggleContext";
 import {
   FaInstagram,
   FaXTwitter,
@@ -11,11 +13,16 @@ import {
 export const Footer = () => {
   // Convert text to URL-friendly slug
   const toSlug = (text) => text.toLowerCase().replace(/\s+/g, "-");
+  const { mode } = useContext(ModeToggleContext);
 
   return (
     <>
-      <div className="h-auto md:h-[60vh] bg-white ">
-        <div className="flex flex-col md:flex-row space-y-5 w-full p-[10%] justify-between">
+      <div
+        className={`h-auto md:h-[60vh] ${
+          mode === "light" ? "bg-white" : "bg-gray-900 text-white"
+        } `}
+      >
+        <div className="flex flex-col md:flex-row space-y-5 w-full p-[10%] justify-between h-full">
           {/* Left Section */}
           <div className="flex gap-4 flex-col">
             <Link to="/" className="flex items-center gap-2">
@@ -27,11 +34,11 @@ export const Footer = () => {
               </span>
             </Link>
             <div className="flex gap-5">
-              <FaFacebook className="text-2xl text-gray-800 hover:text-blue-600 transition-colors duration-300 hover:scale-110 hover:cursor-pointer" />
-              <FaInstagram className="text-2xl text-gray-800 hover:scale-110 hover:cursor-pointer hover:text-pink-500 transition-colors duration-300" />
-              <FaLinkedin className="text-2xl text-gray-800 hover:scale-110 hover:cursor-pointer hover:text-blue-700 transition-colors duration-300" />
-              <FaXTwitter className="text-2xl text-gray-800 hover:scale-110 hover:cursor-pointer hover:text-black dark:hover:text-black transition-colors duration-300" />
-              <FaWhatsapp className="text-2xl text-gray-800 hover:scale-110 hover:cursor-pointer hover:text-green-600 transition-colors duration-300" />
+              <FaFacebook className="text-2xl hover:text-blue-600 transition-colors duration-300 hover:scale-110 hover:cursor-pointer" />
+              <FaInstagram className="text-2xl hover:scale-110 hover:cursor-pointer hover:text-pink-500 transition-colors duration-300" />
+              <FaLinkedin className="text-2xl hover:scale-110 hover:cursor-pointer hover:text-blue-700 transition-colors duration-300" />
+              <FaXTwitter className="text-2xl hover:scale-110 hover:cursor-pointer hover:text-black dark:hover:text-black transition-colors duration-300" />
+              <FaWhatsapp className="text-2xl hover:scale-110 hover:cursor-pointer hover:text-green-600 transition-colors duration-300" />
             </div>
             <div>&copy;2025 Hirely. All rights reserved</div>
           </div>

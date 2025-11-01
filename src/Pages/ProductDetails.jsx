@@ -8,6 +8,7 @@ import { useState, useContext } from "react";
 import { FaArrowLeft } from "react-icons/fa";
 import { CartContext } from "../context/CardContext";
 import ToastMessage from "../Components/ToastMessage";
+import { ModeToggleContext } from "../context/ModeToggleContext";
 const ProductDetails = () => {
   const { id } = useParams();
   const selectedProduct = productsData.find((product) => product.id === id);
@@ -30,8 +31,13 @@ const ProductDetails = () => {
   const [quantity, setQuantity] = useState(1);
   const { addToCart } = useContext(CartContext);
   const [showToast, setShowToast] = useState(false);
+  const { mode } = useContext(ModeToggleContext);
   return (
-    <div className=" min-h-screen w-full  bg-gray-50">
+    <div
+      className={` min-h-screen w-full ${
+        mode === "light" ? "bg-white" : "bg-gray-900 text-white"
+      } `}
+    >
       <button
         className="text-blue-500 flex items-center gap-1  px-[5%] pt-7 hover:cursor-pointer"
         onClick={() => navigate(-1)}
@@ -40,14 +46,20 @@ const ProductDetails = () => {
       </button>
       <div className="w-full h-full p-2 md:p-[5%] flex flex-col md:flex-row justify-between gap-10 ">
         {/* image container */}
-        <div className="w-full md:w-1/2 flex flex-col items-center gap-6 bg-gray-50">
+        <div
+          className={`w-full md:w-1/2 flex flex-col items-center gap-6 ${
+            mode === "light" ? "bg-white" : "bg-gray-900 text-white"
+          } `}
+        >
           {/* Main Product Image */}
 
           <img
             src={currentImage}
             alt={currentName}
-            className="md:h-[400px] h-[230px] w-[230px]
-             md:w-[400px] object-contain mix-blend-multiply  "
+            className={`md:h-[400px] h-[230px] w-[230px]
+             md:w-[400px] object-contain ${
+               mode === "light" ? "mix-blend-multiply" : ""
+             } `}
           />
 
           {/* Variations */}
@@ -84,7 +96,11 @@ const ProductDetails = () => {
 
         {/* product  details container */}
 
-        <div className="md:w-3/4 md:h-3/4 p-4 flex flex-col space-y-5 md:mt-10 bg-white rounded-md  shadow-md">
+        <div
+          className={`md:w-3/4 md:h-3/4 p-4 flex flex-col space-y-5 md:mt-10  rounded-md  shadow-md ${
+            mode === "light" ? "bg-white" : "bg-gray-900 text-white"
+          }`}
+        >
           <h1 className="text-[20px] md:text-2xl lg:text-3xl font-bold">
             {currentName}
           </h1>
@@ -105,7 +121,7 @@ const ProductDetails = () => {
             </div>
             <div className="flex gap-4 items-center">
               <button
-                className="px-3 py-1 bg-gray-200 rounded-md text-[20px] transition-all duration-200
+                className="px-3 py-1 rounded-md text-[20px] transition-all duration-200
               hover:cursor-pointer hover:opacity-80
               "
                 onClick={() => setQuantity(quantity - 1)}
@@ -114,7 +130,7 @@ const ProductDetails = () => {
               </button>
               <span className=" text-[20px] p-2">{quantity}</span>
               <button
-                className="px-3 py-1 bg-gray-200 rounded-md text-[20px] transition-all duration-200
+                className="px-3 py-1  rounded-md text-[20px] transition-all duration-200
               hover:cursor-pointer hover:opacity-80
               "
                 onClick={() => setQuantity(quantity + 1)}
@@ -147,7 +163,7 @@ const ProductDetails = () => {
             >
               add to cart
             </button>
-            <ToastMessage showToast={showToast}>Added To Cart!</ToastMessage>;
+            <ToastMessage showToast={showToast}>Added To Cart!</ToastMessage>
           </div>
         </div>
       </div>

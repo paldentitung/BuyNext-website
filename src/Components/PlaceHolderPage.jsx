@@ -1,10 +1,12 @@
 import React from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { FaArrowLeft } from "react-icons/fa";
-
+import { useContext } from "react";
+import { ModeToggleContext } from "../context/ModeToggleContext";
 const PlaceHolderPage = () => {
   const { page } = useParams();
   const navigate = useNavigate();
+  const { mode } = useContext(ModeToggleContext);
 
   // Function to title case the page name
   const titleCase = (str) => {
@@ -102,17 +104,21 @@ and fast. Perfect for beginners and advanced users alike.
   const content = pageContent[page] || "This page is under construction.";
 
   return (
-    <div className="min-h-screen p-4 sm:p-8 bg-gray-50 flex flex-col items-center justify-start">
+    <div
+      className={`min-h-screen p-4 sm:p-8  flex flex-col items-center justify-start ${
+        mode === "light" ? "bg-gray-50" : "bg-gray-900 text-white"
+      }`}
+    >
       <button
         className="text-blue-500 hover:text-blue-700 flex items-center gap-2 self-start px-4 py-2 rounded-md transition-colors duration-200 hover:cursor-pointer"
         onClick={() => navigate(-1)}
       >
         <FaArrowLeft className="text-sm" /> Go back
       </button>
-      <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 mb-6 text-center">
+      <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 text-center">
         {titleCase(page)}
       </h1>
-      <div className="text-gray-700 shadow-lg p-6 rounded-lg text-left whitespace-pre-line w-full max-w-4xl bg-white">
+      <div className="shadow-lg p-6 rounded-lg whitespace-pre-line w-full max-w-4xl text-center ">
         {content}
       </div>
     </div>

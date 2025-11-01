@@ -1,33 +1,35 @@
 import React from "react";
 import { FaPhone, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
 
-const ContactSection = () => {
+const ContactSection = ({ mode }) => {
   const handleSubmit = (e) => {
     e.preventdefault();
   };
   return (
     <section
-      className="w-full h-auto md:h-[80vh] flex justify-center items-center bg-gray-50 py-16 px-5 md:px-20"
+      className={`w-full h-auto md:h-[80vh] flex justify-center items-center py-16 px-5 md:px-20 ${
+        mode === "light" ? "bg-white" : "bg-gray-900 text-white"
+      }`}
       id="contact"
     >
       <div className=" grid md:grid-cols-2 gap-10">
         {/* Contact Info */}
         <div className="flex flex-col  gap-6">
           <h2 className="text-3xl md:text-4xl font-bold">Contact Us</h2>
-          <p className="text-gray-600">
+          <p>
             Need help or have questions about our products? Our support team is
             here for you!
           </p>
           <div className="flex flex-col gap-4">
-            <div className="flex items-center gap-3 text-gray-700">
+            <div className="flex items-center gap-3 ">
               <FaPhone className="text-blue-500" />
               <span>+1 234 567 890</span>
             </div>
-            <div className="flex items-center gap-3 text-gray-700">
+            <div className="flex items-center gap-3 ">
               <FaEnvelope className="text-blue-500" />
               <span>support@buynext.com</span>
             </div>
-            <div className="flex items-center gap-3 text-gray-700">
+            <div className="flex items-center gap-3 ">
               <FaMapMarkerAlt className="text-blue-500" />
               <span>123 Market Street, Kathmandu, Nepal</span>
             </div>

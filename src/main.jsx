@@ -4,11 +4,14 @@ import "./index.css";
 import App from "./App.jsx";
 import { BrowserRouter } from "react-router-dom";
 import { CartProvider } from "./context/CardContext.jsx";
+import { ModeToggleProvider } from "./context/ModeToggleContext.jsx";
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <BrowserRouter>
       <CartProvider>
-        <App />
+        <ModeToggleProvider>
+          <App />
+        </ModeToggleProvider>
       </CartProvider>
     </BrowserRouter>
   </StrictMode>

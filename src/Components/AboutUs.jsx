@@ -1,8 +1,12 @@
 import React from "react";
 
-const AboutUs = () => {
+const AboutUs = ({ mode }) => {
   return (
-    <div className="w-full flex justify-center items-center flex-col space-y-5 bg-white  h-[600px] px-[5%]">
+    <div
+      className={`w-full flex justify-center items-center flex-col space-y-5  h-[600px] px-[5%] ${
+        mode === "light" ? "bg-white" : "bg-gray-900 text-white"
+      } `}
+    >
       <h1 className="text-[20px] md:text-2xl font-bold">About us</h1>
       <p className="text-center">
         At BuyNext, we believe shopping should be simple, enjoyable, and

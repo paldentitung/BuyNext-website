@@ -7,6 +7,7 @@ const OrderReview = ({
   paymentMethod,
   onBack,
   onPlaceOrder,
+  mode,
 }) => {
   const { cart } = useContext(CartContext);
 
@@ -16,12 +17,16 @@ const OrderReview = ({
   );
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8 px-4">
+    <div
+      className={`min-h-screen  py-8 px-4 ${
+        mode === "light" ? "bg-gary-50" : "bg-gray-900 text-white"
+      }`}
+    >
       <div className="max-w-4xl mx-auto space-y-6">
         <h2 className="text-2xl font-bold">Review Your Order</h2>
 
         {/* Cart Items */}
-        <div className="bg-white p-4 rounded-lg shadow space-y-3">
+        <div className="p-4 rounded-lg shadow space-y-3">
           {cart.map((item) => (
             <div key={item.id} className="flex items-center justify-between">
               <div className="flex items-center gap-3">
@@ -48,7 +53,7 @@ const OrderReview = ({
         </div>
 
         {/* Shipping Info */}
-        <div className="bg-white p-4 rounded-lg shadow">
+        <div className=" p-4 rounded-lg shadow">
           <h3 className="font-semibold">Shipping</h3>
           <p>
             {shippingMethod} • Estimated: {shippingDate}
@@ -56,7 +61,7 @@ const OrderReview = ({
         </div>
 
         {/* Payment Info */}
-        <div className="bg-white p-4 rounded-lg shadow">
+        <div className=" p-4 rounded-lg shadow">
           <h3 className="font-semibold">Payment Method</h3>
           <p>{paymentMethod}</p>
         </div>
