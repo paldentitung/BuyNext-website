@@ -4,6 +4,7 @@ import { productsData } from "../data/ProductsData";
 import { Link } from "react-router-dom";
 import { useState, useContext } from "react";
 import { ModeToggleContext } from "../context/ModeToggleContext";
+import { motion } from "framer-motion";
 const ProductListing = ({ showAll = false }) => {
   console.log(productsData);
   const [searchTerm, setSearchTerm] = useState("");
@@ -76,7 +77,19 @@ const ProductListing = ({ showAll = false }) => {
           ) : (
             <>
               {showData.map((product, index) => (
-                <Card key={index} product={product} mode={mode} />
+                <motion.div
+                  key={product.id}
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true, amount: 0.2 }}
+                  transition={{
+                    duration: 0.25,
+                    ease: "easeOut",
+                    delay: index * 0.01, // stagger effect
+                  }}
+                >
+                  <Card product={product} mode={mode} />
+                </motion.div>
               ))}
             </>
           )}
