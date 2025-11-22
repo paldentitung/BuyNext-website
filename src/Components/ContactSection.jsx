@@ -7,7 +7,7 @@ const ContactSection = ({ mode }) => {
   };
   return (
     <section
-      className={`w-full h-auto md:h-[80vh] flex justify-center items-center py-16 px-5 md:px-20 ${
+      className={`w-full h-auto md:h-[80vh] flex justify-center overflow-hidden items-center py-16 px-5 md:px-20 ${
         mode === "light" ? "bg-white" : "bg-gray-900 text-white"
       }`}
       id="contact"

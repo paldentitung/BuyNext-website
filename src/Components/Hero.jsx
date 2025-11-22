@@ -3,7 +3,7 @@ import hero_image from "../assets/hero.jpg";
 import { Link } from "react-router-dom";
 const Hero = () => {
   return (
-    <div className="min-h-screen md:h-[100vh] relative">
+    <div className="h-screen md:h-[60vh] relative">
       {/* overlay */}
       <div className="absolute inset-0 bg-black/50 flex flex-col items-center justify-center text-center px-4 text-white">
         <h1 className="text-2xl md:text-3xl lg:text-5xl font-bold mb-4 text-shadow">

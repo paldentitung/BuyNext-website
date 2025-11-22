@@ -13,7 +13,7 @@ const Card = ({ product, mode }) => {
   return (
     <>
       <div
-        className={`rounded-md  h-auto lg:h-[400px]  flex justify-center items-center flex-col gap-5 shadow-md  ${
+        className={`rounded-md  h-auto lg:h-[400px]  flex justify-center items-center flex-col gap-5 shadow-md p-1  ${
           mode === "light"
             ? "shadow-[rgb(230,230,230)]"
             : " shadow-[rgba(0,0,0,0.3)]"

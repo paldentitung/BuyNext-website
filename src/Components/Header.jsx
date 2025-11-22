@@ -26,7 +26,7 @@ const Header = () => {
     >
       {/* Logo */}
       <Link to="/" className="flex items-center gap-2">
-        <div className="w-10 h-10 md:w-12 md:h-12 bg-blue-500 rounded-full flex justify-center items-center text-white font-bold italic text-lg md:text-xl">
+        <div className="w-8 h-8 md:w-10 md:h-10 bg-blue-500 rounded-full flex justify-center items-center text-white font-bold italic text-sm md:text-md">
           BN
         </div>
         <span className="text-2xl md:text-3xl text-blue-500 font-bold">
@@ -64,10 +64,10 @@ const Header = () => {
 
         <div
           onClick={toggleMode}
-          className={` hidden md:flex w-12 h-6 rounded-2xl px-1  border  items-center cursor-pointer`}
+          className={` hidden md:flex w-14 h-7 rounded-2xl px-1  border  items-center cursor-pointer`}
         >
           <span
-            className={`w-4 h-4 rounded-full transition-all   duration-200     ${
+            className={`w-5 h-5 rounded-full transition-all   duration-200     ${
               mode === "light"
                 ? "translate-x-0 bg-blue-500   "
                 : " translate-x-6 bg-white "

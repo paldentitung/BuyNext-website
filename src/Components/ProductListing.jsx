@@ -42,13 +42,15 @@ const ProductListing = ({ showAll = false }) => {
               <div className={`flex self-end items-center space-x-1 `}>
                 <label htmlFor="filter">Select:</label>
                 <select
-                  className={` p-2 outline-0 border  rounded-md cursor-pointer ${
+                  className={` p-2 outline-0 border  rounded-md cursor-pointer focus:cursor-pointer hover:cursor-pointer ${
                     mode === "light"
                       ? "bg-gray-50 text-black"
                       : "bg-gray-900 text-white"
                   }`}
                   onChange={(e) => setFilterItem(e.target.value)}
                 >
+                  <option value="">All Product</option>
+
                   <option value="clothing">Clothing</option>
                   <option value="sports">Sports</option>
                   <option value="Kitchen">Kitchen</option>
